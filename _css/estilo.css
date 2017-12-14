@@ -1,0 +1,785 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    background: #E3E5E4;
+    font-family: 'Lato', sans-serif;
+}
+
+/*Formatando Imagem*/
+
+.logo {
+    position: relative;
+}
+
+.logo img {
+    border-radius: 50%;
+    width: 120px;
+    position: absolute;
+    z-index: 1;
+    margin: 5px 5px 5px 10px;
+    border: 0.09375em solid #40081B;
+    padding: 2px;
+}
+
+/*Formatando Menu*/
+
+menu {
+    background: #787E7F;
+    border-bottom: 2px solid #C2CBCE;
+}
+
+menu ul {
+    position: relative;
+    list-style: none;
+    background: #787E7F;
+}
+
+menu > ul {
+    height: 30px;
+    margin-left: 140px;
+}
+
+menu li {
+    float: left;
+}
+
+menu li a {
+    display: block;
+    text-decoration: none;
+    height: 10px;
+    line-height: 10px;
+    padding: 10px;
+    background: #787E7F;
+    color: #fff;
+    font-family: 'Lato', sans-serif;
+    font-size: 11pt;
+    border-bottom: 2px solid #C2CBCE;
+}
+
+menu > ul > li > a {
+    padding-right: 23px;
+    padding-left: 23px;
+}
+
+menu ul li:hover > a {
+    background: #B4BCBF;
+    color: black;
+}
+
+/*SUBMENU*/
+
+menu li ul {
+    position: absolute;
+    top: 32px;
+    display: none;
+}
+
+menu li:hover ul {
+    display: block;
+}
+
+menu li ul li {
+    float: inherit;
+    border: 2px solid #787E7F;
+}
+
+menu li li a {
+    width: 112px;
+    border-bottom: none;
+    padding-left: 20px;
+}
+
+/*Pagina Principal*/
+
+.apresentacao {
+    margin-left: 400px;
+    padding-top: 250px;
+    font-size: 60pt;
+    text-shadow: 5px 3px 5px #000;
+    color: #fff;
+}
+
+/*CONFIG GLOBRAL TELAS CADASTRO*/
+
+.cd_title {
+    text-align: center;
+    padding-top: 10px;
+}
+
+.container {
+    padding-top: 30px;
+    width: 950px;
+    margin: auto;
+}
+
+/*Listas*/
+article {
+    float: left;
+}
+
+/*Busca*/
+
+.container-btn-busca {
+    border: solid 1px #787E7F;
+    border-radius: 11px;
+    width: 300px;
+    height: 29px;
+    margin: auto;
+}
+
+.input-buscar {
+    float: left;
+    background: transparent;
+    padding-left: 10px;
+    font-size: 15px;
+    border: none;
+    height: 29px;
+    width: 220px;
+}
+
+.input-buscar:focus {
+    background: white;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.btn_buscar {
+    border: none;
+    color: white;
+    float: left;
+    height: 29px;
+    border-radius: 0 7px 7px 0;
+    width: 70px;
+    font-weight: bold;
+    background: #787E7F;
+    cursor: pointer;
+}
+
+.btn_buscar:hover {
+    background: #ccc;
+    color: #3F403F;
+    border-radius: 0 10px 10px 0;
+}
+
+/*Tabela com nomes*/
+
+.container-lista {
+    width: 300px;
+    height: 350px;
+    border: solid 1px #787E7F;
+    overflow-y: auto;
+    margin-top: 10px;
+    background: #fff;
+    font-weight: bold;
+}
+
+.container-lista-profissionais {
+    height: 415px;
+}
+
+.container-lista ul a{
+    text-decoration: none;
+    color:#3F403F;
+}
+
+.container-lista li:hover {
+    background: #787E7F;
+    color: #fff;
+    cursor: pointer;
+}
+
+/*Bloco de cadastro DIREITA*/
+
+aside {
+    float: right;
+    width: 603px;
+}
+
+.altera-cadastro{
+    height: 401px;
+    width: 603px;
+    position: absolute;
+}
+
+.altera-profissional{
+    height: 426px;
+    width: 603px;
+    position: absolute;
+}
+
+/*ITENS BLOCO DE CADASTRO DIREITA - SEÇÃO EM ABAS CONFIGURAÇÃO GLOBAL*/
+
+.nav_tabs {
+    width: 603px;
+    position: relative;
+    height: 472px;
+}
+
+.nav_tabs ul {
+    list-style: none;
+    margin-left: 5px;
+}
+
+.nav_tabs ul li {
+    float: left;
+}
+
+.tab_label {
+    display: block;
+    width: 65px;
+    height: 10px;
+    line-height: 10px;
+    background-color: #787E7F;
+    padding: 10px;
+    font-size: 13px;
+    color: #fff;
+    cursor: pointer;
+    text-align: center;
+    font-weight: bold;
+    border-top-left-radius: 8px;
+}
+
+.nav_tabs .rd_tab {
+    display: none;
+    position: absolute;
+}
+
+.nav_tabs .rd_tab:checked ~ label {
+    background-color: #ccc;
+    color: #000;
+    border-top-left-radius: 8px;
+}
+
+.tab-content {
+    border: solid 1px #787E7F;
+    display: none;
+    position: absolute;
+    width: 603px;
+    left: 0;
+    height: 436px;
+}
+
+.rd_tab:checked ~ .tab-content {
+    display: block;
+}
+
+/*TABELA CADASTRO*/
+
+.form-default label {
+    display: inline-block;
+    width: 105px;
+    vertical-align: baseline;
+    font-size: 13px;
+    line-height: 15px;
+    text-align: right;
+}
+
+.form-default input {
+    vertical-align: baseline;
+    width: 470px;
+    padding: 3px 3px 3px 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 10pt;
+    margin-bottom: 5px;
+    background: transparent;
+    display: inline-block;
+}
+
+.form-default select {
+    vertical-align: baseline;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 10pt;
+    display: inline-block;
+    padding: 2px;
+}
+
+
+.container-form1 {
+    margin-top: 8px;
+}
+
+.container-form1-clientes{
+    margin-top:0;
+}
+
+.container-form1 .input60 {
+    width: 60px;
+}
+
+.form-default input[type=tel] {
+    width: 194px;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+.container-form2 {
+    width: 105px;
+    float: left;
+}
+
+.container-form2 label {
+    padding-top: 80px;
+}
+
+.container-form3 {
+    float: left;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    width: 483px;
+    margin: 5px 0 10px 3px;
+}
+
+.container-form3-box {
+    padding: 5px;
+}
+
+form div.container-form3-box input {
+    width: 383px;
+}
+
+form div.container-form3-box label {
+    width: 60px;
+}
+
+form div.container-form3-box .input60 {
+    width: 60px;
+}
+
+form div.container-form3-box .label93 {
+    width: 93px;
+}
+
+form div.container-form3 .input209 {
+    width: 209px;
+}
+
+form div.container-form3 .input260 {
+    width: 260px;
+}
+
+.container-uf-cidade{
+    margin-bottom: 5px;
+    height: 20px;
+}
+
+.content-cidade{
+    float: left;
+}
+
+.content-uf{
+    float: left;
+}
+
+.content-uf .select-uf{
+    background: transparent;
+}
+
+/*OBSERVAÇÃO*/
+
+form div.container-form4 {
+    float: left;
+}
+
+form div.container-form4 textarea {
+    display: inline-block;
+    vertical-align: baseline;
+    width: 464px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 13px;
+    background: transparent;
+    padding: 10px;
+    height: 49px;
+}
+
+form div.container-form4 .lab-2 {
+    float: left;
+}
+
+form div.container-form4 .lab-2 label {
+    padding-top: 25px;
+}
+
+form div.container-form4 .container-form-obs-tx {
+    float: left;
+    margin-left: 4px;
+}
+
+/*CHECKBOX*/
+
+form div.container_chkbx {
+    margin-left: 115px;
+    padding: 10px;
+    float: left;
+}
+
+form div.container_chkbx div {
+    float: left;
+    height: 15px;
+    line-height: 15px;
+}
+
+form div.container_chkbx div input[type="checkbox"] {
+    width: 20px;
+    margin: 0;
+}
+
+form div.container_chkbx div label {
+    width: 170px;
+    text-align: left;
+    margin-left: 10px;
+}
+
+/*BLOCO "DADOS" TABELA DE CADASTRO DIREITA EM ABAS*/
+.container-tab-top {
+    width: 100%;
+    height: 30px;
+    background: #ccc;
+}
+
+.container-tab-top>p {
+    line-height: 27px;
+    padding-left: 30px;
+    font-size: 15px;
+    font-weight: bold;
+    float: left;
+}
+
+.icon-info{
+    float: left;
+    position: relative;
+    border:1px solid #fff;
+    background: #1d4b8f;
+    border-radius: 50%;
+    width: 15px;
+    height: 15px;
+    margin-left: 15px;
+    margin-top: 6px;
+    cursor: pointer;
+}
+
+.icon-info-dentro{
+    position: absolute;
+    width: 15px;
+    }
+
+.icon-info-dentro>p{
+    text-align: center;
+    font-size: 11px;
+    color: #fff;
+    font-weight: bold;
+}
+
+title{
+    width: 50px;
+    height: 20px;
+    background: blue;
+}
+
+.container-tab-bottom{
+    margin: 10px;
+    font-size: 14px;
+}
+
+.container-tab-bottom ul li{
+    display: block;
+    float: none;
+    margin-left: 15px;
+}
+
+.container-tab-bottom>ul>li{
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.container-tab-bottom ul ul{
+    margin-top: 5px;
+}
+
+.container-tab-bottom ul ul li {
+    margin-left: 30px;
+    padding: 5px;
+    font-weight: normal;
+}
+
+/*BLOCO "HORÁRIOS" TABELA DE CADASTRO DIREITA EM ABAS*/
+
+.container-selecao-horarios{
+    width: 260px;
+    height: 48px;
+}
+
+.margin-top{
+    margin-top: 15px;
+}
+
+.container-dias-semana{
+    float: left;
+    font-size: 15px;
+    font-weight: bold;
+    margin-right: 10px;
+    line-height: 48px;
+    width: 28px;
+}
+
+.container-horairos{
+    float: left;
+    position: relative;
+    background: #DBDEDD;
+    border:1px solid #787E7F;
+    padding: 5px;
+}
+
+.container-horairos .select-float{
+    float: left;
+    margin-right: 8px;
+}
+
+.container-horairos .select-float-last{
+    margin-right: 0;
+}
+
+ .select-float .title-select{
+     margin-left: 5px;
+     font-weight: bold;
+}
+
+ .select-float .select_horas{
+     padding: 0 5px 0 5px;
+ }
+
+.container-horairos .btn_excluir{
+    position: absolute;
+    top:3px;
+    right:3px;
+    background: red;
+    border-radius: 50%;
+    width: 12px;
+    height: 12px;
+    line-height: 12px;
+    text-align: center;
+    color: #fff;
+    font-family: impact, sans-serif;
+    cursor: pointer;
+}
+
+.btn_adicionar{
+    float: left;
+    width: 25px;
+    height: 25px;
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 15px;
+    margin-top: 12px;
+    line-height: 24px;
+    font-family: impact, sans-serif;
+    color: #fff;
+    background-color: #1d4b8f;
+    border-radius: 50%;
+    text-align: center;
+    cursor: pointer;
+}
+
+/*INICIO MODAL*/
+
+#modal-novo-cliente{
+    position: fixed;
+    background:#E3E5E4;
+    border: 1px solid#FF4500;
+    box-shadow: -5px 5px 5px rgba(0,0,0,0.5);
+    top:40px;
+    right: 216px;
+    display: none;
+}
+
+#modal-novo-cliente:target {
+    display: block;
+}
+
+#modal-altera-cadastro{
+    position: fixed;
+    background:#E3E5E4;
+    border: 1px solid#FF4500;
+    box-shadow: -5px 5px 5px rgba(0,0,0,0.5);
+    top:40px;
+    right: 216px;
+    display: none;
+}
+
+#modal-altera-cadastro:target{
+    display: block;
+}
+
+/*PROFISSIONAIS*/
+#modal-novo-profissional{
+    position: fixed;
+    background:#E3E5E4;
+    border: 1px solid#FF4500;
+    box-shadow: -5px 5px 5px rgba(0,0,0,0.5);
+    top:31px;
+    right: 200px;
+    display: none;
+    height: 594px;
+}
+
+#modal-novo-profissional:target {
+    display: block;
+}
+
+ .modal-profissional-aside{
+     padding: 10px;
+ }
+
+.modal-topo-profissionais {
+    width: 100%;
+}
+ .modal-header-h1{
+     padding: 8px;
+     text-align: center;
+     font-size: 15pt;
+ }
+/*PROFISSIONAIS*/
+
+.modal-header{
+    height: 25px;
+    background: #fff;
+    line-height: 25px;
+    font-size: 10pt;
+}
+
+.modal-header h1{
+    margin-left: 10px;
+}
+
+.modal-header a{
+    float: right;
+    width: 25px;
+    height: 25px;
+    text-align: center;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.modal-header a:hover{
+    background: red;
+    color: #fff;
+}
+
+.modal-topo{
+    width: 100%;
+}
+
+.modal-topo h1{
+    padding: 15px;
+    text-align: center;
+    font-size: 15pt;
+}
+
+/*MODAL CUSTOM FORM*/
+
+.modal-form-default input{
+    background: #fff;
+}
+
+.modal-container-form4 {
+    float: left;
+}
+
+form div.modal-container-form4 .lab-2 {
+    float: left;
+}
+
+form div.modal-container-form4 .lab-2 label {
+    padding-top: 25px;
+}
+
+.modal-container-form4 textarea {
+    display: inline-block;
+    vertical-align: baseline;
+    width: 464px;
+    height: 60px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 13px;
+    background: #fff;
+    padding: 10px;
+}
+
+.modal-container-form-obs-tx{
+    float: left;
+    margin-left: 4px;
+}
+/*MODAL FIM CUSTOM FORM*/
+
+.modal-footer{
+    width: 100%;
+    float: left;
+}
+
+.modal_content_button{
+    padding: 10px 0 10px 0;
+    width: 146px;
+    margin: auto;
+}
+
+.modal_content_button input{
+    vertical-align: baseline;
+    width: auto;
+    padding: 5px 10px 5px 10px;
+    height: auto;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 13px;
+    margin-bottom: 0;
+    background: none;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.modal_content_button a{
+    margin-left: 10px;
+}
+
+/*FIM MODAL*/
+
+
+/*RODAPÉ*/
+footer {
+    float: left;
+    width: 100%;
+    display: block;
+    margin-top: 50px;
+}
+
+.container-footer{
+    margin-top: 20px;
+}
+
+/*BOTÕES DO RODAPÉ*/
+
+.btn_footer {
+    margin: auto;
+    width: 465px;
+}
+
+.btn_footer a {
+    text-decoration: none;
+}
+
+.btn_footer input {
+    padding: 3px 15px;
+    font-weight: bold;
+    border: 1px solid #ccc;
+    margin-left: 10px;
+}
+
+.btn_footer input:hover {
+    background: #ccc;
+}
