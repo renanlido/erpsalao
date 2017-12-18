@@ -5,14 +5,14 @@
     <title>Cadastro</title>
     <meta name="author" content="Renan Oliveira">
     <meta name="description" content="Exercício de Criação">
-    <link rel="stylesheet" href="_css/estilo.css">
+    <link rel="stylesheet" href="css/estilo.css">
     <link href="https://fonts.googleapis.com/css?family=Lato:300" rel="stylesheet">
 </head>
 <body>
 <header>
     <div class="logo">
         <a href="?pagina=principal.php">
-            <img src="_img/logo espaço dellas.png" alt="Logo topo"/>
+            <img src="img/logo espaço dellas.png" alt="Logo topo"/>
         </a>
     </div>
     <menu>
