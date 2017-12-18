@@ -55,7 +55,7 @@ if (isset($_POST['salvar'])){
                         <?php
                             while ($row=$result->fetch_assoc()):
                         ?>
-                            <a href="?pagina=clientes#modal-altera-cadastro&id=<?php echo $row["id"]?>">
+                            <a href="?pagina=clientes&id=<?php echo $row["id"]?>#modal-altera-cadastro">
                                 <li>
                                     <?php echo $row["nome_apelido"]?>
                                 </li>
@@ -74,6 +74,9 @@ if (isset($_POST['salvar'])){
             <a href="#modal-altera-cadastro" ><div class="altera-cadastro"></div></a>
             <!--INICIO FORM DE VISUALIZAÇÃO DE CADASTRO-->
             <form class="form-default">
+                <?php
+                    $id = $_GET['id'];
+                ?>
                 <div class="container-form1 container-form1-clientes">
                     <label for="nome">Nome ou Apelido:</label>
                     <input type="text" id="nome" disabled/>
