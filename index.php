@@ -7,6 +7,7 @@
     <meta name="description" content="Exercício de Criação">
     <link rel="stylesheet" href="css/estilo.css">
     <link href="https://fonts.googleapis.com/css?family=Lato:300" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js" type="text/javascript"></script>
 </head>
 <body>
 <header>

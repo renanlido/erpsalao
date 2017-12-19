@@ -3,7 +3,7 @@ header('Content-Type: text/html; charset=utf-8');
 require_once "config.php";
 $erro = false;
 
-/*GRAVA DADOS DO CLIENTE NOVO NO BANCO DE DADOS*/
+//GRAVA DADOS DO CLIENTE NOVO NO BANCO DE DADOS
 if (isset($_POST['salvar'])){
 
   $apelido = $_POST['cad_apelido'];
@@ -38,7 +38,7 @@ if (isset($_POST['salvar'])){
         </h1>
     </header>
     <div class="container">
-        <!--Listas-->
+        <!--INICIA LISTA DE CLIENTES-->
         <article>
             <div class="container-btn-busca">
                 <input type="text" class="input-buscar" placeholder="Buscar Clientes"/>
@@ -55,11 +55,9 @@ if (isset($_POST['salvar'])){
                         <?php
                             while ($row=$result->fetch_assoc()):
                         ?>
-                            <a href="?pagina=clientes&id=<?php echo $row["id"]?>#modal-altera-cadastro">
-                                <li>
+                            <li class="cliente-Lista">
                                     <?php echo $row["nome_apelido"]?>
-                                </li>
-                            </a>
+                            </li>
                         <?php
                             endwhile;
                         ?>
@@ -69,10 +67,14 @@ if (isset($_POST['salvar'])){
                 ?>
             </div>
         </article>
-        <!--Cadastros-->
+        <!--FINAL LISTA DE CLIENTES-->
+
+
+        <!--INICIA SEQUENCIA DE MODAIS-->
+
+        <!--INICIA MODAL DE VISUALIZAÇÃO DE CADSTRO-->
         <aside>
             <a href="#modal-altera-cadastro" ><div class="altera-cadastro"></div></a>
-            <!--INICIO FORM DE VISUALIZAÇÃO DE CADASTRO-->
             <form class="form-default">
                 <?php
                     $id = $_GET['id'];
@@ -146,10 +148,11 @@ if (isset($_POST['salvar'])){
                     </div>
                 </div>
             </form>
-            <!--FIM FORM DE VISUALIZAÇÃO DE CADASTRO-->
         </aside>
+        <!--FINALIZA MODAL DE VISUALIZAÇÃO DE CADASTRO-->
 
-        <!--INICIO ALTERA CADASTRO MODAL-->
+
+        <!--INICIO MODAL DE ALTERAÇÃO DE CADASTRO-->
         <aside id="modal-altera-cadastro" class="modal-alteara-cadastro">
             <div class="modal-header">
                 <h1>Cliente
@@ -239,15 +242,14 @@ if (isset($_POST['salvar'])){
                     </div>
                 </div>
             </form>
-            <!--FIM FORM ALTERA CADASTRO MODAL-->
         </aside>
-        <!--FIM MODAL-->
+        <!--FINALIZA MODAL DE ALTERAÇÃO DE CADASTRO-->
 
 
-        <!--INICIO NOVO CADASTRO MODAL-->
+        <!--INICIA MODAL DE NOVO CADSTRO-->
 
-        <!--AQUI FAZ A VERIFICAÇÃO SE OS DADOS FORAM INSERIDOS COM SUCESSO OU NÃO-->
         <?php
+        //AQUI FAZ A VERIFICAÇÃO SE OS DADOS FORAM INSERIDOS COM SUCESSO OU NÃO
         if (isset($erro)&&$erro==true) {
           echo "<script>alert('Houve um erro ao cadastrar o cliente')</script>";
         }
@@ -344,9 +346,10 @@ if (isset($_POST['salvar'])){
                     </div>
                 </div>
             </form>
-            <!--FIM NOVO CADASTRO MODAL-->
         </aside>
-        <!--FIM MODAL-->
+        <!--FINALIZA MODAL DE NOVO CADASTRO-->
+
+        <!--FINAL DA SEQUENCIA DE MODAIS-->
     </div>
 </section>
 <!--Botões-->
@@ -359,3 +362,4 @@ if (isset($_POST['salvar'])){
         <a href="?pagina=principal.php"><input type="button" name="fechar" value="Fechar"/></a>
     </div>
 </footer>
+<script src="js/main.js"></script>
