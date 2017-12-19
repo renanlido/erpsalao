@@ -7,6 +7,9 @@ html {
     background: #E3E5E4;
     font-family: 'Lato', sans-serif;
 }
+body {
+  overflow-x: hidden;
+}
 
 /*Formatando Imagem*/
 
@@ -181,15 +184,17 @@ article {
     height: 415px;
 }
 
-.ativo{
-    background: #787E7F;
-    color: #fff;
-}
 
+/*.cliente-Lista {
+  transition: all 0.2s ease;
+}*/
 .cliente-Lista:hover {
-    background: #787E7F;
-    color: #fff;
-    cursor: pointer;
+  background: #d7d7d7;
+  cursor: pointer;
+}
+.ativo {
+  background: #787E7F !important;
+  color: #fff !important;
 }
 
 /*Bloco de cadastro DIREITA*/
@@ -265,6 +270,28 @@ aside {
 
 .rd_tab:checked ~ .tab-content {
     display: block;
+}
+
+/* Loading ajax */
+.loading {
+  background: #fff;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 999;
+  font-size: 14px;
+  width: 100%;
+  text-align: center;
+  color: #000;
+  font-weight: bold;
+  padding: 10px;
+  opacity: 0.85;
+  box-shadow: 0 -3px 6px rgba(0,0,0,0.1);
+}
+.loading img {
+  vertical-align: middle;
+  height: 20px;
+  margin-right: 10px;
 }
 
 /*TABELA CADASTRO*/

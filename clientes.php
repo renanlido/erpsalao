@@ -44,26 +44,26 @@ if (isset($_POST['salvar'])){
                 <input type="text" class="input-buscar" placeholder="Buscar Clientes"/>
                 <button class="btn_buscar" name="btnLocalizar">Buscar</button>
             </div>
-            <div class="container-lista">
+            <div id="container-lista" class="container-lista">
                 <?php
-                    //Faz seleciona todos os dados da tabela cadastro no banco de dados e ordena por uma coluna
-                    $consultaBanco = "SELECT * FROM `cadastro` ORDER BY nome_apelido ASC";
-                    //Faz uma consulta ao banco de dados
-                    if ($result = $mysqli ->query($consultaBanco)):
+                //Faz seleciona todos os dados da tabela cadastro no banco de dados e ordena por uma coluna
+                $consultaBanco = "SELECT * FROM `cadastro` ORDER BY nome_apelido ASC";
+                //Faz uma consulta ao banco de dados
+                if ($result = $mysqli ->query($consultaBanco)):
                 ?>
-                    <ul>
-                        <?php
-                            while ($row=$result->fetch_assoc()):
-                        ?>
-                            <li class="cliente-Lista">
-                                    <?php echo $row["nome_apelido"]?>
-                            </li>
-                        <?php
-                            endwhile;
-                        ?>
-                    </ul>
+                  <ul>
+                    <?php
+                    while ($row = $result->fetch_assoc()):
+                    ?>
+                      <li class="cliente-Lista" data-ref="<?php echo $row["id"]?>">
+                        <?php echo $row["nome_apelido"]?>
+                      </li>
+                    <?php
+                    endwhile;
+                    ?>
+                  </ul>
                 <?php
-                    endif;
+                endif;
                 ?>
             </div>
         </article>
@@ -74,10 +74,15 @@ if (isset($_POST['salvar'])){
 
         <!--INICIA MODAL DE VISUALIZAÇÃO DE CADSTRO-->
         <aside>
-            <a href="#modal-altera-cadastro" ><div class="altera-cadastro"></div></a>
+            <div class="loading">
+              <img src="img/loading.gif" />
+              Carregando...
+            </div>
+
+            <!-- <a href="#modal-altera-cadastro" ><div class="altera-cadastro"></div></a> -->
             <form class="form-default">
                 <?php
-                    $id = $_GET['id'];
+                //$id = $_GET['id'];
                 ?>
                 <div class="container-form1 container-form1-clientes">
                     <label for="nome">Nome ou Apelido:</label>
@@ -363,3 +368,71 @@ if (isset($_POST['salvar'])){
     </div>
 </footer>
 <script src="js/main.js"></script>
+
+
+<script>
+$(document).ready(function(){
+
+  var cliente_id;
+  var cliente_data;
+
+  /*
+   * Ao clicar em um cliente na lista
+   */
+  $('#container-lista li').click(function() {
+
+    // Interface
+    $('.cliente-Lista').removeClass('ativo');
+    $(this).addClass('ativo');
+
+    // Pega id
+    cliente_id = $(this).attr('data-ref');
+
+    // Carregamento via ajax
+    ajax_load_cliente(cliente_id);
+  });
+
+
+  /*
+   * Carregamento via ajax
+   */
+  function ajax_load_cliente(cliente_id) {
+    $('.loading').show();
+
+    $.ajax({
+      url: "ajax/cliente.php?id=" + cliente_id,
+      beforeSend: function( xhr ) {
+        xhr.overrideMimeType( "text/plain; charset=x-user-defined" );
+      }
+    })
+    .done(function(data) {
+      if (console && console.log) {
+        $('.loading').hide();
+
+        //console.log("Dados carregados:", data.slice(0, 100));
+        // Converte JSON em formato para ser utilizado
+        cliente_data = JSON.parse(data);
+
+        // Insere os dados nos inputs
+        $('#nome').val(cliente_data.nome_apelido);
+        $('#nome_compl').val(cliente_data.nome_compl);
+        $('#tel').val(cliente_data.tel);
+        $('#cel').val(cliente_data.cel);
+        $('#email').val(cliente_data.email);
+        $('#niver').val(cliente_data.niver);
+        $('#cep').val(cliente_data.cep);
+        $('#end').val(cliente_data.endr);
+        $('#num').val(cliente_data.num);
+        $('#comp').val(cliente_data.comp);
+        $('#bairro').val(cliente_data.bairro);
+        $('#cidade').val(cliente_data.cidade);
+        $('#obs').val(cliente_data.obs);
+      }
+    })
+    .fail(function() {
+      alert("Erro ao carregar dados.");
+    });
+  }
+
+})
+</script>
