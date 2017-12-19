@@ -171,6 +171,7 @@ article {
     height: 350px;
     border: solid 1px #787E7F;
     overflow-y: auto;
+    overflow-x: hidden;
     margin-top: 10px;
     background: #fff;
     font-weight: bold;
@@ -180,12 +181,12 @@ article {
     height: 415px;
 }
 
-.container-lista ul a{
-    text-decoration: none;
-    color:#3F403F;
+.ativo{
+    background: #787E7F;
+    color: #fff;
 }
 
-.container-lista li:hover {
+.cliente-Lista:hover {
     background: #787E7F;
     color: #fff;
     cursor: pointer;
