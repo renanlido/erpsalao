@@ -7,10 +7,22 @@
     <meta name="description" content="Exercício de Criação">
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/estilo.css">
-    <link href="https://fonts.googleapis.com/css?family=Lato:300" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js" type="text/javascript"></script>
 </head>
 <body>
+
+
+<div class="aviso-loading">
+  <img src="img/loading.gif" />
+  Carregando...
+</div>
+
+<div class="aviso-sucesso">
+  Ação efetuada com sucesso
+</div>
+
+
 <header>
     <div class="logo">
         <a href="?pagina=principal.php">

@@ -9,6 +9,7 @@ html {
 }
 body {
   overflow-x: hidden;
+  font-weight: 300;
 }
 
 /*Formatando Imagem*/
@@ -177,7 +178,6 @@ article {
     overflow-x: hidden;
     margin-top: 10px;
     background: #fff;
-    font-weight: bold;
 }
 
 .container-lista-profissionais {
@@ -272,8 +272,11 @@ aside {
     display: block;
 }
 
-/* Loading ajax */
-.loading {
+
+/* AVISOS */
+
+.aviso-loading {
+  display: none;
   background: #fff;
   position: absolute;
   bottom: 0;
@@ -284,15 +287,35 @@ aside {
   text-align: center;
   color: #000;
   font-weight: bold;
-  padding: 10px;
+  padding: 15px;
   opacity: 0.85;
   box-shadow: 0 -3px 6px rgba(0,0,0,0.1);
+  font-weight: 900;
 }
-.loading img {
+.aviso-loading img {
   vertical-align: middle;
   height: 20px;
   margin-right: 10px;
 }
+.aviso-sucesso {
+  display: none;
+  background: #2f47f6;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 999;
+  font-size: 16px;
+  width: 100%;
+  text-align: center;
+  color: #fff;
+  font-weight: bold;
+  padding: 15px;
+  opacity: 0.85;
+  box-shadow: 0 -3px 6px rgba(0,0,0,0.1);
+  font-weight: 900;
+}
+
+
 
 /*TABELA CADASTRO*/
 
