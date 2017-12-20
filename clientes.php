@@ -30,7 +30,7 @@ if (isset($_POST['salvar'])){
     $erro = true;
   }
 }
- ?>
+?>
 <section>
     <header>
         <h1 class="cd_title">
@@ -74,33 +74,28 @@ if (isset($_POST['salvar'])){
 
         <!--INICIA MODAL DE VISUALIZAÇÃO DE CADSTRO-->
         <aside>
-            <div class="loading">
-              <img src="img/loading.gif" />
-              Carregando...
-            </div>
-
             <!-- <a href="#modal-altera-cadastro" ><div class="altera-cadastro"></div></a> -->
-            <form class="form-default">
+            <form id="form-cliente" class="form-default">
                 <?php
                 //$id = $_GET['id'];
                 ?>
                 <div class="container-form1 container-form1-clientes">
                     <label for="nome">Nome ou Apelido:</label>
-                    <input type="text" id="nome" disabled/>
+                    <input type="text" name="nome" id="nome" disabled/>
                     <label for="nome_compl">Nome Completo : </label>
-                    <input type="text" id="nome_compl"/>
+                    <input type="text" name="nome_compl" id="nome_compl"/>
 
                     <label for="tel">Telefone: </label>
-                    <input type="tel" id="tel"/>
+                    <input type="tel" name="tel" id="tel"/>
 
                     <label for="cel" class="input60">Celular: </label>
-                    <input type="tel" id="cel"/>
+                    <input type="tel" name="cel" id="cel"/>
 
                     <label for="email">E-mail: </label>
-                    <input type="email" id="email"/>
+                    <input type="email" name="email" id="email"/>
 
                     <label for="niver">Aniversário: </label>
-                    <input type="date" id="niver"/>
+                    <input type="date" name="niver" id="niver"/>
                 </div>
 
                 <div class="container-form2">
@@ -110,33 +105,33 @@ if (isset($_POST['salvar'])){
                 <div class="container-form3">
                     <div class="container-form3-box">
                         <label for="cep">CEP: </label>
-                        <input type="number" class="label93" id="cep"/>
+                        <input type="number" name="cep" class="label93" id="cep"/>
                         <br/>
 
                         <label for="end">Endereço: </label>
-                        <input type="text" id="end"/>
+                        <input type="text" name="end" id="end"/>
                         <br/>
 
                         <label for="num">Número: </label>
-                        <input type="number" class="input60" id="num"/>
+                        <input type="number" name="num" class="input60" id="num"/>
 
                         <label for="comp" class="label93">Complemento: </label>
-                        <input type="text" class="input209" id="comp"/>
+                        <input type="text" class="input209" name="comp" id="comp"/>
                         <br/>
 
                         <label for="bairro">Bairro: </label>
-                        <input type="text" id="bairro"/>
+                        <input type="text" name="bairro" id="bairro"/>
                         <br/>
 
                         <div class="container-uf-cidade">
                             <div class="content-cidade">
                                 <label for="cidade">Cidade: </label>
-                                <input type="text" class="input260" id="cidade"/>
+                                <input type="text" class="input260" name="cidade" id="cidade"/>
                                 <br/>
                             </div>
                             <div class="content-uf">
                                 <label for="uf">Estado: </label>
-                                <select class="input60 select-uf" id="uf">
+                                <select class="input60 select-uf" name="uf" id="uf">
                                     <option value="---">---</option>
                                 </select>
                             </div>
@@ -148,10 +143,12 @@ if (isset($_POST['salvar'])){
                         <label for="obs">Observações: </label>
                     </div>
                     <div class="container-form-obs-tx">
-                        <textarea id="obs" ></textarea>
+                        <textarea name="obs" id="obs" ></textarea>
                         <br/>
                     </div>
                 </div>
+
+                <input type="submit" name="submit" value="Salvar" />
             </form>
         </aside>
         <!--FINALIZA MODAL DE VISUALIZAÇÃO DE CADASTRO-->
@@ -397,7 +394,7 @@ $(document).ready(function(){
    * Carregamento via ajax
    */
   function ajax_load_cliente(cliente_id) {
-    $('.loading').show();
+    $('.aviso-loading').show();
 
     $.ajax({
       url: "ajax/cliente.php?id=" + cliente_id,
@@ -407,7 +404,7 @@ $(document).ready(function(){
     })
     .done(function(data) {
       if (console && console.log) {
-        $('.loading').hide();
+        $('.aviso-loading').hide();
 
         //console.log("Dados carregados:", data.slice(0, 100));
         // Converte JSON em formato para ser utilizado
@@ -415,7 +412,7 @@ $(document).ready(function(){
 
         // Insere os dados nos inputs
         $('#nome').val(cliente_data.nome_apelido);
-        $('#nome_compl').val(cliente_data.nome_compl);
+        $('#nome_compl').val(cliente_data.nome_completo);
         $('#tel').val(cliente_data.tel);
         $('#cel').val(cliente_data.cel);
         $('#email').val(cliente_data.email);
@@ -432,6 +429,47 @@ $(document).ready(function(){
     .fail(function() {
       alert("Erro ao carregar dados.");
     });
+  }
+
+
+  /*
+   * Post via AJAX
+   */
+  $('#form-cliente').submit(function() {
+
+    var $form = $(this);
+    var serializedData = $form.serialize();
+
+    $.ajax({
+      type: 'POST',
+      // data: {
+      //   name: "Rian"
+      // },
+      data: serializedData,
+      url: 'ajax/cliente_update.php?id=' + cliente_id,
+
+      beforeSend : function () {
+        $('.aviso-loading').show();
+      },
+      success : function(data) {
+        $('.aviso-loading').hide();
+        mostra_sucesso('Salvo com sucesso');
+      },
+      error : function(a,b,c) {
+        alert("Erro ao atualizar dados.");
+        //alert('Erro: ' + a[b] + ' ' + c);
+      }
+    });
+
+    return false;
+  });
+
+
+  function mostra_sucesso(texto) {
+    $('.aviso-sucesso').html(texto).show();
+    setTimeout(function() {
+      $('.aviso-sucesso').fadeOut();
+    }, 1500);
   }
 
 })
